@@ -32,25 +32,46 @@ html(lang="ru")
       +e.window
         +e.window-header
           +e('h1').window-header-text Что сделать
+          +e('a').window-header-archive(href="") Архив
         +e.window-body
-          div Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-        //-
+          //- div Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+
           +e('ul').list
 
             +e.list-item
-              +b('label').todo-item
+              +b('div').todo-item
                 +e('input').input(type="checkbox", value="1", checked)
                 +e('span').text Купить масло
+              +b('a').todo-del(href="")
 
             +e.list-item
-              +b('label').todo-item
+              +b('div').todo-item
                 +e('input').input(type="checkbox", value="1")
                 +e('span').text Оплатить коммуналку
+              +b('a').todo-del(href="")
 
             +e.list-item
-              +b('label').todo-item
+              +b('div').todo-item
                 +e('input').input(type="checkbox", value="1")
                 +e('span').text Подготовить материал для стажеров
+              +b('a').todo-del(href="")
 
-        //-+e.window-footer
-          +e('input').add-todo-item(type="text", placeholder="Новая задача")
+            +e.list-item
+              +b('div').todo-item
+                +e('input').input(type="checkbox", value="1")
+                +e('span').text Какой-нибудь довольно длинный текст, чтобы посмотреть как оно будет
+              +b('a').todo-del(href="")
+
+            +e.list-item
+              +b('div').todo-item
+                +e('input').input(type="checkbox", value="1")
+                +e('span').text Заверстать тудушник
+              +b('a').todo-del(href="")
+
+
+        +e.window-footer
+          +b.control-container
+            +e.input
+              +b('input').new-todo-input(type="text", placeholder="Новая задача")
+            +e.submit
+              +b('button').add-new-todo(type="submit")

@@ -1,8 +1,23 @@
+@import "../common/mixins";
+
+$back-color = #1abc9c
+$text-color = white
+$small-padding = 10px
+
+/*noinspection CssOverwrittenProperties*/
 body
-  background-color #f0f0f0
+  background-color #fff
   text-align: center
+  
+  @media only screen and (min-width: 768px)
+    background-color #f0f0f0
 
 .todo
+  position: relative
+
+  @media only screen and (min-width: 768px)
+    padding: 50px 0
+
   /*noinspection CssOverwrittenProperties*/
   &__window
     display: block
@@ -12,12 +27,394 @@ body
     background-color: white;
     text-align: left;
 
+    font-antialiased()
+
 
     @media only screen and (min-width: 768px)
       width: 400px;
-      border: 1px solid rgba(0,0,0,0.1);
       padding: 0;
       margin: 0;
       display: inline-block;
-      top: 50px;
       position: relative;
+
+      border-radius: 5px;
+      overflow: hidden;
+      box-shadow: 0 0 5px rgba(0,0,0,0.05);
+      border: 1px solid #ddd;
+
+
+
+  &__window-header
+    position: relative
+    padding: $small-padding
+    margin: 0
+    background: $back-color
+    height: 45px
+
+  &__window-header-archive
+    top: 0;
+    position: absolute;
+    right: 0;
+    font-size: 13px;
+    text-transform: capitalize;
+    text-decoration: none;
+    height: 45px;
+    display: block;
+    line-height: 45px;
+    padding: 0 $small-padding;
+    color white
+
+    &:hover
+      text-decoration: none
+      color white
+      background-color: rgba(0, 0, 0, 0.03)
+
+    &:active
+      background-color rgba(0,0,0,0.06)
+
+
+
+
+  &__window-header-text
+    color: $text-color
+    margin: 0;
+    padding: 0
+    font-size: 18px;
+    line-height: 25px
+    text-transform: uppercase;
+    font-weight: 400;
+
+
+  /*noinspection CssOverwrittenProperties*/
+  &__window-body
+    min-height: calc(100% - 45px - 40px)
+    font-weight: 100
+    padding-bottom: 40px;
+
+    @media only screen and (min-width: 768px)
+      padding-bottom: 0
+      min-height 0
+
+
+  /*noinspection CssOverwrittenProperties*/
+  &__window-footer
+    position: fixed
+    height: 40px
+    overflow hidden
+    width: 100%
+    border-top 1px solid rgba(0,0,0,0.1)
+    bottom: 0
+    background-color white
+    
+    @media only screen and (min-width: 768px)
+      position: relative
+
+
+  &__list
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-antialiased()
+
+  &__list-item
+    background: #fff;
+    min-height: 40px;
+    color: #444;
+    line-height: 1.5
+    padding: $small-padding
+    position: relative
+
+    &:nth-child(2n)
+      background: #f7f7f7
+
+    &:hover .todo-del
+      display: block
+
+
+
+
+
+
+
+// инпут добавления нового айтема
+.new-todo-input
+  position: relative;
+  display: block;
+  width: 100%;
+
+  margin: 0;
+  appearance: none;
+  outline: none;
+
+  -webkit-tap-highlight-color: transparent;
+
+  color: #444;
+  border: 0;
+  outline: 0;
+  text-align: left;
+  white-space: nowrap;
+
+  // дефолтный размер
+  height: 40px;
+  padding: 0 $small-padding;
+  overflow: hidden;
+  line-height: 18px
+  font-weight: 400;
+  font-size: 14px;
+
+  background-color: transparent;
+
+  &:focus, &:hover, &:active
+    box-shadow: none !important;
+
+
+  // Цвет плейсхолдера
+  &::-webkit-input-placeholder
+    color: #bbb;
+    opacity: 1 !important
+
+  &:-moz-placeholder  /* Firefox 18- */
+    color: #bbb;
+    opacity: 1 !important
+
+  &::-moz-placeholder   /* Firefox 19+ */
+    color: #bbb;
+    opacity: 1 !important
+
+  &:-ms-input-placeholder
+    color: #bbb;
+    opacity: 1 !important
+
+
+
+// кнопка добавления
+.add-new-todo
+  position: relative;
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+
+  text-decoration: none;
+  user-select: none;
+  appearance: none;
+  outline: none;
+
+  background-color: transparent;
+
+  color: #333;
+  border: 0;
+
+  outline: 0;
+  text-align: center;
+  white-space: nowrap;
+
+  // дефолтный размер
+  font-size: 14px;
+  line-height: 1
+
+  cursor: pointer;
+
+  width: 60px;
+  height: 40px;
+
+  &:hover
+    background-color rgba(0,0,0,0.03)
+  &:active
+    background-color rgba(0,0,0,0.06)
+
+  &:after,
+  &:before
+    position: relative
+    content ""
+    display: block
+  &:after
+    width: 20px;
+    height: 2px;
+    background-color: #ccc;
+    right: 20px;
+    position: absolute;
+    top: 19px;
+
+  &:before
+    width: 2px;
+    height: 20px;
+    background-color: #ccc;
+    right: 29px;
+    position: absolute;
+    top: 10px;
+
+  &:hover:after,
+  &:hover:before
+    background-color #666
+
+
+
+
+// сетка контролов в подвале окна
+.control-container
+  position: relative;
+  height: 40px;
+  overflow hidden
+  width: 100%;
+
+  display: table;
+  text-align: left;
+  font-size: 0
+  line-height: 0
+
+  &__input
+  &__submit
+    vertical-align: middle;
+    display: table-cell;
+
+  &__input
+    width: 100%
+
+  &__submit
+    width: 60px
+
+
+
+
+.todo-item
+  padding-left: 32px;
+  padding-right: 30px;
+
+  // анти бутстрап
+  margin-bottom: 0;
+  display: inline-block;
+
+  &__input
+    box-sizing: border-box;
+    padding: 0;
+    //display: none;
+    //
+    position: absolute;
+    background: red;
+    width: 24px;
+    height: 24px;
+    display: block;
+    margin-top: -2px;
+    margin-left: -32px;
+    z-index: 1000000000;
+    border-radius: 100%;
+    opacity: 0;
+    cursor: pointer;
+
+  &__input:hover + &__text:before
+    border-color: #ccc
+
+
+
+  &__input:checked + &__text:before
+    border-color: $back-color
+
+
+  &__input:checked + &__text:after
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    opacity: 1;
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 10px;
+    background: rgba(0, 0, 0, 0);
+    top: 0;
+    left: -27px;
+    border: 3px solid $back-color
+    border-top: none;
+    border-right: none;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+
+  &__input:checked + &__text
+    text-decoration: line-through;
+    color: #bbb;
+
+
+
+  &__text
+    display: block;
+    //cursor: pointer;
+    position: relative;
+    font-size: 13px;
+    color: #333;
+    line-height: 1.55;
+    cursor text
+
+    &:before
+      content: "";
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      position: absolute;
+      left: -32px;
+      border-radius: 100%;
+      border: 1px solid #ddd
+      top: -2px
+
+    //&:hover
+    //  &:before
+    //    border-color: #ccc
+
+
+.todo-del
+  position: absolute
+  display: none;
+  width: 30px;
+  height: 30px
+
+  margin: 0;
+  padding: 0
+  appearance: none;
+  outline: none;
+
+
+  -webkit-tap-highlight-color: transparent;
+
+  color: #444;
+  border: 0;
+  outline: 0;
+  text-decoration none
+  text-align: left;
+  white-space: nowrap;
+
+  &:hover, &:active
+    text-decoration none
+
+  // дефолтный размер
+  overflow: hidden;
+  line-height: 18px
+  font-weight: 400;
+  font-size: 14px;
+
+  top: 7px;
+  right: 4px;
+  //background: red;
+  border-radius: 100%;
+  transform: rotate(45deg);
+
+
+
+  &:after,
+  &:before
+    position: relative
+    content ""
+    display: block
+  &:after
+    width: 17px;
+    height: 1px;
+    background-color: #f4586a;
+    right: 6px;
+    position: absolute;
+    top: 14px;
+
+  &:before
+    width: 1px;
+    height: 17px;
+    background-color: #f4586a;
+    right: 14px;
+    position: absolute;
+    top: 6px;
