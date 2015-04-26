@@ -1,0 +1,64 @@
+// --- MIXIN'S
+
+// clearfix
+cf()
+  zoom: 1 // For IE 6/7 (trigger hasLayout)
+  &:before, &:after
+    content ""
+    display table
+  &:after
+    clear both
+
+
+// Префиксы
+vendor(prop, args)
+  -webkit-{prop} args
+  -moz-{prop} args
+  -ms-{prop} args
+  -o-{prop} args
+  {prop} args
+
+transform() // arguments падает в миксин по умолчанию
+  vendor('transform', arguments)
+
+transition()
+  vendor('transition', arguments)
+
+transform-origin()
+  vendor('transform-origin', arguments)
+
+backface-visibility()
+  vendor('backface-visibility', arguments)
+
+pointer-events()
+  vendor('pointer-events', arguments)
+
+user-select()
+  vendor('user-select', arguments)
+
+column-count()
+  vendor('column-count', arguments)
+column-gap()
+  vendor('column-gap', arguments)
+columns()
+  vendor('columns', arguments)
+appearance()
+  vendor('appearance', arguments)
+
+
+font-antialiased()
+  -webkit-font-smoothing: antialiased
+  font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+
+none-decoration()
+  &, &:hover
+    text-decoration none
+
+
+// стандартные падинги и мэрджены
+// Заголовки
+// font-family: "Open Sans", Tahoma, Arial, Helvetica, sans-serif; // //"Open Sans", "Helvetica Neue", Helvetica, sans-serif;
+
+
+
