@@ -1,22 +1,12 @@
 @import "../common/mixins";
 
-$back-color = #1abc9c
+$back-color = #238fbc
 $text-color = white
 $small-padding = 10px
 
 /*noinspection CssOverwrittenProperties*/
-body
-  background-color #fff
-  text-align: center
-  
-  @media only screen and (min-width: 768px)
-    background-color #f0f0f0
-
 .todo
   position: relative
-
-  @media only screen and (min-width: 768px)
-    padding: 50px 0
 
   /*noinspection CssOverwrittenProperties*/
   &__window
@@ -244,7 +234,7 @@ body
 
   &:hover:after,
   &:hover:before
-    background-color #666
+    background-color $back-color
 
 
 
@@ -339,7 +329,7 @@ body
     font-size: 13px;
     color: #333;
     line-height: 1.55;
-    cursor text
+    cursor default  //text
 
     &:before
       content: "";
