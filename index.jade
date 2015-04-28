@@ -17,7 +17,7 @@ html(lang="ru")
     link(rel="shortcut icon" href="" type="image/png")
     link(rel="icon" href="" type="image/png")
     //- фонты
-    link(rel="stylesheet", type="text/css", href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,600,300,700,800&subset=latin,cyrillic")
+    link(rel="stylesheet", type="text/css", href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,600,300,700,800&subset=latin,cyrillic")
 
     link(rel="stylesheet", type="text/css", href="common/normalize.css")
     link(rel="stylesheet", type="text/css", href="common/base.css")
@@ -31,10 +31,20 @@ html(lang="ru")
     +b.todo
       +e.window
         +e.window-header
-          +e('h1').window-header-text Что сделать
-          +e('a').window-header-archive(href="") Архив
+          +e('h1').window-header-text TODO
+
+          +b.todo-filter
+            +e('label').item
+              +e('input').input(type="radio", value="1", name="todo-filter")
+              +e('span').text todo
+            +e('label').item
+              +e('input').input(type="radio", value="2", name="todo-filter")
+              +e('span').text done
+            +e('label').item
+              +e('input').input(type="radio", value="3", name="todo-filter", checked)
+              +e('span').text all
+
         +e.window-body
-          //- div Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
 
           +e('ul').list
 
@@ -70,7 +80,7 @@ html(lang="ru")
 
 
         +e.window-footer
-          +b.control-container
+          +b('form').control-container
             +e.input
               +b('input').new-todo-input(type="text", placeholder="Новая задача")
             +e.submit
